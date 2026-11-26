@@ -55,9 +55,21 @@ windowsill/
 ├── scripts/
 │   ├── main.gd
 │   └── world_simulation.gd
+├── tests/
+│   └── simulation_smoke.gd
 └── docs/
     └── ROADMAP.md
 ```
+
+## Run the simulation smoke test
+
+With Godot installed, run this from the repository root:
+
+```sh
+godot --headless --path . --script tests/simulation_smoke.gd
+```
+
+The smoke test checks world generation, creature identity, basic state shape, and a short simulation run. It has been added to the project, but it has **not** been executed in this environment because the Godot executable is unavailable here.
 
 ## Development status
 
