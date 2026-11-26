@@ -10,7 +10,7 @@ Windowsill is a local-first desktop terrarium: a small meadow inhabited by auton
 
 1. Install **Godot 4.2 or later**.
 2. Open `project.godot` in Godot.
-3. Press **F6** or **Run Project** (the project main scene is already configured).
+3. Press **F5** or choose **Run Project** (the project main scene is already configured).
 
 No account, server, network access, downloaded asset, or third-party runtime is required. The initial art is drawn in code so the project can boot offline without an asset pipeline.
 
