@@ -1,7 +1,7 @@
 extends Node2D
 
 const WorldSimulation = preload("res://scripts/world_simulation.gd")
-const TILE := 28.0
+const TILE := 36.0
 const PANEL_W := 278.0
 const FOOTER_H := 82.0
 
@@ -164,6 +164,9 @@ func _draw_creatures() -> void:
 		elif species == "Lumenmoth":
 			body = COLORS.lumen
 		if species == "Lumenmoth":
+			var local_hour := float(sim.world.get("clock", 7.5))
+			if local_hour < 6.0 or local_hour >= 19.0:
+				draw_circle(point, tile_size * 0.39, Color(0.82, 0.74, 1.0, 0.12))
 			draw_colored_polygon(PackedVector2Array([point + Vector2(-tile_size * 0.16, 0), point + Vector2(-tile_size * 0.46, -tile_size * 0.28), point + Vector2(-tile_size * 0.38, tile_size * 0.12)]), body.lightened(0.12))
 			draw_colored_polygon(PackedVector2Array([point + Vector2(tile_size * 0.16, 0), point + Vector2(tile_size * 0.46, -tile_size * 0.28), point + Vector2(tile_size * 0.38, tile_size * 0.12)]), body.lightened(0.12))
 			draw_circle(point, tile_size * 0.18, body)
@@ -266,6 +269,9 @@ func _draw_footer(size: Vector2) -> void:
 
 func _draw_weather_overlay() -> void:
 	var weather := str(sim.world.get("weather", "Clear"))
+	var local_hour := float(sim.world.get("clock", 7.5))
+	if local_hour < 6.0 or local_hour >= 19.0:
+		draw_rect(world_rect, Color(0.08, 0.12, 0.18, 0.24), true)
 	if weather == "Light rain":
 		for i in range(54):
 			var x := world_rect.position.x + fposmod(float(i * 83) + rain_phase * 42.0, world_rect.size.x)
